@@ -69,13 +69,13 @@ Melakukan scaler pada data numerik agar mendekati disribusi normal, hal ini memb
 - Memanggil fungsi predict pada setiap model untuk mendapat hasil prediksi.
                                 
 ## Evaluation
-Karna untuk menyelesaikan kasus regresi, Model ini menggunakan metrik evaluasi Mean Squared Error, Dengan hasil sebagai berikut. \
+Karna untuk menyelesaikan kasus regresi, Model ini menggunakan metrik evaluasi Mean Squared Error, Dengan hasil sebagai berikut.
 
-![test](https://zippyimage.com/images/2021/11/12/bd5e4e8508eba8de2a5e79a752fef810.png) \
-![visual](https://zippyimage.com/images/2021/11/15/21283abe5f25e273dee68b8071eee66a.png) \
+![test](https://zippyimage.com/images/2021/11/12/bd5e4e8508eba8de2a5e79a752fef810.png)\
+![visual](https://zippyimage.com/images/2021/11/15/21283abe5f25e273dee68b8071eee66a.png)\
 
 - Mean Squared Error Bertujuan memberi tahu seberapa dekat garis regresi dengan sekumpulan poin.
-- Berdasarkan hasil evaluasi, algoritma Random forest memiliki nilai prediksi paling mendekati nilai asli. \
+- Berdasarkan hasil evaluasi, algoritma Random forest memiliki nilai prediksi paling mendekati nilai asli.
 
 ![hasil](https://zippyimage.com/images/2021/11/15/7d203414acf50bd3181037fc5e2d9940.png)
 
