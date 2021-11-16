@@ -1,101 +1,73 @@
 # Laporan Proyek Machine Learning - Andrian Syah putra
- 
-## Domain Proyek
- 
-Penggunaan komputer sampai saat ini terus meningkat tiap tahunnya, Hampir segala bidang memerlukan komputer, contohnya pendidikan, bisnis, pemerintahan dan lainnya. Harga komputer berbeda beda sesuai dengan spesifikasinya, tinggal kita sesuaikan kebutuhan saja, karna banyaknya model part komputer dipasaran membuat kita sedikit kesulitan untuk memprediksi harga komputer sesuai spesifikasi yang kita inginkan.
- 
-**Rubrik/Kriteria Tambahan**:
-- Agar khalayak umum dapat memprediksi harga komputer sebelum membeli,dengan membuat model ML yang dapat memprediksi harga komputer.
-- Referensi : [5 Kegunaan komputer dalam kehidupan sehari-hari](https://tekno.kompas.com/read/2021/09/21/20030027/5-kegunaan-komputer-dalam-kehidupan-sehari-hari)
- 
+
+## Project Overview
+Film merupakan salah satu produk dari media massa, film juga merupakan media hiburan dan merupakan salah satu cara berkomunikasi yang menampilkan gambar ( visual ) dan suara ( audio ) secara bersamaan atau biasa disebut media massa audio visual seperti pada Televisi. Selain itu film ditampilkan pada khalayak luas dan film mampu menyampaikan pesan secara mudah dengan adegan – adegan yang diperagakan. Terkadang kita sedikit kesulitan untuk mencari film yang cocok dan mungkin kita sukai, dikarnakan ada begitu banyak daftar film yang ada.
+
+**Rubrik/Kriteria Tambahan (Opsional)**:
+- Agar khalayak umum dapat dengan mudah mendapatkan rekomendasi film yang cocok dan mungkin di sukai.
+- Referensi : [Universitas Muhammadiyah Ponorogo](http://eprints.umpo.ac.id/4237/2/BAB%20I.pdf#:~:text=A.%20Latar%20Belakang%20Masalah%20Film%20merupakan%20salah%20satu,dan%20merupakan%20salah%20satu%20cara%20berkomunikasi%20yang%20menampilkan) 
+
 ## Business Understanding
- 
+
 ### Problem Statements
- 
-- Dari beberapa fitur yang ada,yang mana yang paling berpengaruh ke harga komputer?
-- Fitur apa yang paling tidak berpengaruh terhadap harga komputer?
-- Apakah komputer dengan cd lebih mahal daripada komputer tanpa cd?
-- Berapa harga komputer berdasarkan spesifikasi tertentu?
- 
+
+- Berapa total user yang memberikan rating?
+- Berapa jumlah judul film yang diberi rating?
+- Bagaimana agar user mendapatkan rekomendasi film untuk ditonton?
+
 ### Goals
- 
-- Mengetahui fitur yang paling berpengaruh terhadap harga.
-- Mengetahui fitur yang paling tidak berpengaruh terhadap harga komputer.
-- Mengetahui apakah komputer dengan cd lebih mahal daripada tanpa cd.
-- Membuat model machine learning yang dapat memprediksi harga komputer berdasarkan spesifikasinya seakurat mungkin.
- 
- 
-### Solution statements
-- Melakukan visualisasi data untuk mencari fitur yang paling berpengaruh terhadap harga komputer.
-- Menggunaakan 3 algoritma yaitu RF, KNN, dan boosting.
 
-1. Algoritma RandomForest (RF) termasuk kedalam kategori model ensemble. RF merupakan versi bagging dari decision tree, pada kasus regresi hasil prediksi merupakan rata rata prediksi seluruh pohon decision tree pada model ensemble.
+- Mengetahui total user yang memberi rating.
+- Mengetahui jumlah judul film yang di beri rating.
+- Membuat model machine learning yang bisa memberi rekomendasi film berdasarkan rating user sebelumnya.
 
-2. KNN bekerja dengan membandingkan jarak sample ke sample pelatihan lain dengan memilih sejumlah k-tetangga terdekat.
+    ### Solution statements
+    - Melakukan data exploratory untuk menemukan jumlah judul film dan user yang memberikan rating.
+    - Membangun model dengan pendekatan deep learning, yang dapat memberikan user rekomendasi film untuk ditonton.
+    - Membuat class recommenderNet dengan layer embedding dari library tensorflow dan keras.
+    - Layer embedding merupakan layer perkalian matrix sederhana yang mengubah integer positif (index) menjadi vector dense dengan ukuran tetap.
+    - Melakukan training dan hyperparameter tuning pada learning_rate optimizer untuk mendapatkan error sekecil mungkin.
 
-3. Algoritma Boosting bekerja dengan menggambungkan beberapa model sederhana sehingga membentuk model yang kuat, model pertama dibangun dari data latih, kemudian ia membuat model kedua untuk memperbaiki kesalahan model pertama, begitu seterusnya sampai data latih terprediksi dengan baik atau telah mencapai jumlah maksimum.
-
-- Kemudian mengevaluasi ketiga algoritma tersebut untuk mendapatkan model dengan akurasi tertinggi.
-- Setelah mendapatkan model dengan akurasi tertinggi, barulah dilakukan hyperparameter tuning.
-- Melakukan hyperparameter tuning pada baseline untuk mendapatkan akurasi seakurat mungkin.                             
- 
 ## Data Understanding
-Fitur yang paling berpengaruh terhadap harga pada dataset ini adalah ram, sedangkan yang paling tidak berpengaruh adalah ads, seperti yang terlihat di correlation matrix berikut
+Jumlah user yang memberi rating adalah 944, dan jumlah judul film adalah 1682, Hasil ini berdasarkan kode berikut.
+```python 
+    print('jumlah user :', len(df.user_id.unique()))
+    print('jumlah judul film :', len(df.item_id.unique()))
+```
+dengan output sebagai berikut:
 \
-![corr](https://zippyimage.com/images/2021/11/15/a2969e740d05f7968e2c6d3f14a85af4.png)        
-\
-Komputer dengan cd ternyata memiliki harga yang lebih tinggi seperti yang terlihat di visualisasi berikut
-![viscd](https://zippyimage.com/images/2021/11/15/9147f4a5e1ca7e7804ee30322e6befc5.png)
+![output](https://zippyimage.com/images/2021/11/16/a914136721934a32c7dddc94eb9a7796.png)
 
-Dataset yang digunakan memiliki 6259 tipe komputer dengan spesifikasi yang berbeda beda, dan memiliki 10 label yang mana label price merupakan fitur target. Sumber dataset: [Kaggle](https://www.kaggle.com/ritikmaheshwari/computer-price-prediction?select=ComputerPricesData.csv).
- 
- 
-### Variabel-variabel pada ComputerPriceData adalah sebagai berikut:
-- price : harga dalam Rupee
-- speed : kecepatan komputer
-- hd : kapasitas hardisk
-- cd : ada tidaknya CD rom
-- multi : apakah memiliki port multi?
-- ads : frekuensi iklan
-- trend : tren di pasar
-- premium : apakah komputer tersebut premium?
-- ram : Ukuran ram
-- screen : ukuran monitor
- 
- 
+Dataset yang digunakan memiliki 1682 judul film, 944 user, 100002 baris data, dan label rating dengan rentang 1 sampai 5.
+Sumber dataset : [kaggle](https://www.kaggle.com/zeeshanmulla/recommendation-system-movie/code)
+
+### Variabel-variabel pada movie_id_title dan Recommendation_system adalah sebagai berikut:
+- item_id : id judul film
+- title : judul film
+- user_id : id user
+- rating : penilaian user
+
 ## Data Preparation
 
-1. Encoding fitur kategori.
-Karna dalam dataset yang digunakan terdapat fitur kategori, dan komputer tidak bisa memproses data berbentuk kategori, maka dilakukan encoding, dalam kasus ini kita menggunakan teknik One-Hot encoding dari library sklearn.
+- Membuat variable preparation yang nantinya akan diisi dengan dataframe yang sudah dihilangkan duplikat datanya.
+- Mengkonversi data series menjadi list pada data variable preparation dengan tolist dari library numpy.
+- Membuat variable title_new yang berisi dictionary key value untuk label user_id, title_id, dan rating_title, yang nantinya akan digunakan     untuk membuat data judul film yang belum di tonton/diberi rating oleh user.
+- Encode fitur user_id dan Item_id menjadi index integer menggunakan enumerate dari library python dan tolist dari library numpy.
+- Mapping user_id dan Item_id ke dataframe, dan mengubah data rating menjadi float.
+- Train test split dengan mengacak data, dan membagi langsung 80% data train dan 20% data validasi.
 
-2. Train test split
-Untuk membagi data train dan data test, disini kita menggunakan Train_test_split dari library sklearn dengan ukuran test data sebesar 20% dan data train sebesar 80%.
-
-3. Standarisasi
-Melakukan scaler pada data numerik agar mendekati disribusi normal, hal ini membantu meningkatkan performa model yang kita bangun, dalam kasus ini kita menggunakan StandardScaler dari library sklearn.
-                     
 ## Modeling
-1. Kelebihan algoritma random forest yaitu dapat mengatasi noise dan missing value, cocok digunakan dalam jumlah data yang besar, namun sulit untuk interpretasi dan membutuhkan tuning yang tepat.
-2. Kelebihan algoritma KNN adalah pelatihan nya sangat cepat dan mudah di pelajari sedangkan kekurangannya adalah nilai k sering bias, keterbatasan memori dan mudah tertipu atribut yang tidak relevan.
-3. kelebihan algoritma boosting adalah mampu membangun model yang kuat dengan ensemble algoritma lemah, namun sulit untuk menentukan parameter yang tepat.
-
-- Mempersiapkan variable models untuk mengumpulkan hasil predict model yang akan dievaluasi.
-- Model pertama adalah KNN, dengan parameter n_neighbors=25.
-- Model kedua adalah RandomForest, dengan parameter n_estimator=30, max_depth=15, n_jobs=-1.
-- model ketiga adalah boosting, dengan parameter n_estimator=38, learning_rate=0.09.
-- Kemudian memanggil fungsi fit pada setiap model untuk melakukan training.
-- Memanggil fungsi predict pada setiap model untuk mendapat hasil prediksi.
-                                
+Tahap awal modeling adalah, dengan membuat class yang berisi layer embedding dengan activation sigmoid. Layer embedding merupakan layer perkalian matrix sederhana yang mengubah integer positif (index) menjadi vector dense dengan ukuran tetap, output fungsi sigmoid dalam rentang (0, 1), membuatnya ideal untuk masalah klasifikasi biner di mana kita perlu menemukan probabilitas data milik kelas tertentu.
+selanjutnya compile model, model ini menggunakan Binary Crossentropy untuk menghitung loss function, Adam (Adaptive Moment Estimation) sebagai optimizer dengan learning_rate = 0.0001, dan root mean squared error (RMSE) sebagai metrics evaluation. Dilanjutkan dengan training model dengan parameter batch_size = 50, dan epochs = 100. Membuat variable untuk memuat data film yang belum di tonton user berdasarkan dataframe title_new yang sudah di buat sebelumnya, gunakan fungsi predict dan lakukan penyesuaian dengan variable yang telah di buat sebelumnya untuk menampilkan top-N recommendation sebagai berikut.
+\
+![top](https://zippyimage.com/images/2021/11/16/dfeb258687039dfe6d90e8552d3b3429.png)
 ## Evaluation
-Karna untuk menyelesaikan kasus regresi, Model ini menggunakan metrik evaluasi Mean Squared Error, Dengan hasil sebagai berikut.
+Karna yang ingin kita analisis adalah besarnya kesalahan prediksi, maka digunakan RMSE yang mana semakin kecil nilai nya/mendekati atau sama dengan 0, maka performa model semakin bagus, berikut merupakan visualisasi hasil training model dengan metrics RMSE.
 \
-![test](https://zippyimage.com/images/2021/11/15/2aae08ff1a2a49dde060028fc856eb99.png)
-\
-![visual](https://zippyimage.com/images/2021/11/15/5e3a46462be91d0b87d3919d99de0e57.png)
+![visual](https://zippyimage.com/images/2021/11/16/fac426f1f73243b98c9015c4993a5fc3.png)
 
-- Mean Squared Error Bertujuan memberi tahu seberapa dekat garis regresi dengan sekumpulan poin.
-- Berdasarkan hasil evaluasi, algoritma Random forest memiliki nilai prediksi paling mendekati nilai asli.
+RMSE merupakan nilai rata-rata dari jumlah kuadrat kesalahan atau jumlah kuadrat dari nilai prakiraan dan observasi.
 
-![hasil](https://zippyimage.com/images/2021/11/15/ee3a9c01dd57296797ac632c16e8b2b6.png)
 
 **---Ini adalah bagian akhir laporan---**
+
