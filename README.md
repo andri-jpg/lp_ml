@@ -42,10 +42,10 @@ Penggunaan komputer sampai saat ini terus meningkat tiap tahunnya, Hampir segala
 ## Data Understanding
 Fitur yang paling berpengaruh terhadap harga pada dataset ini adalah ram, sedangkan yang paling tidak berpengaruh adalah ads, seperti yang terlihat di correlation matrix berikut
 \
-[corr](https://zippyimage.com/images/2021/11/15/a2969e740d05f7968e2c6d3f14a85af4.png)        
+![corr](https://zippyimage.com/images/2021/11/15/a2969e740d05f7968e2c6d3f14a85af4.png)        
 \
 Komputer dengan cd ternyata memiliki harga yang lebih tinggi seperti yang terlihat di visualisasi berikut
-[viscd](https://zippyimage.com/images/2021/11/15/9147f4a5e1ca7e7804ee30322e6befc5.png)
+![viscd](https://zippyimage.com/images/2021/11/15/9147f4a5e1ca7e7804ee30322e6befc5.png)
 
 Dataset yang digunakan memiliki 6259 tipe komputer dengan spesifikasi yang berbeda beda, dan memiliki 10 label yang mana label price merupakan fitur target. Sumber dataset: [Kaggle](https://www.kaggle.com/ritikmaheshwari/computer-price-prediction?select=ComputerPricesData.csv).
  
