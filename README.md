@@ -74,6 +74,9 @@ Karna yang ingin kita analisis adalah besarnya kesalahan prediksi, maka digunaka
 
 Rumus RMSE adalah sebagai berikut.
 RMSE = $$\sqrt{\frac{\sum_{n}^{i=1}(\hat{y}-y_{i})^{2}}{n}}
+
+$$\int_\Omega \nabla u \cdot \nabla v~dx = \int_\Omega fv~dx$$
+
 \
 berikut merupakan visualisasi hasil training model dengan metrics RMSE.
 \
