@@ -46,20 +46,20 @@ Sumber dataset : [kaggle](https://www.kaggle.com/zeeshanmulla/recommendation-sys
  
 ## Data Preparation
 
-**Feature selection**
- - Menghapus kolom label yang tidak di perlukan, yaitu `timestamp`.
- - Membuat variable `fix_title` yang nantinya akan diisi dengan dataframe yang sudah dihilangkan duplikat datanya.
-**Data transformation**
- - Mengkonversi data series menjadi list pada data variable `fix_title` dengan tolist dari library numpy.
- - Encode fitur `user_id` dan `Item_id` menjadi index integer menggunakan enumerate dari library python dan tolist dari library numpy.
- - Mapping `user_id` dan `Item_id` ke dataframe, dan mengubah data `rating` menjadi float.
-**Data Normalization**
- - Min Max scaling pada nilai rating dengan kode berikut
+### Feature selection
+- Menghapus kolom label yang tidak di perlukan, yaitu `timestamp`.
+- Membuat variable `fix_title` yang nantinya akan diisi dengan dataframe yang sudah dihilangkan duplikat datanya.
+### Data transformation
+- Mengkonversi data series menjadi list pada data variable `fix_title` dengan tolist dari library numpy.
+- Encode fitur `user_id` dan `Item_id` menjadi index integer menggunakan enumerate dari library python dan tolist dari library numpy.
+- Mapping `user_id` dan `Item_id` ke dataframe, dan mengubah data `rating` menjadi float.
+### Data Normalization
+- Min Max scaling pada nilai rating dengan kode berikut
 ```python
     y = df['rating'].apply(lambda x: (x - min_rating) / (max_rating - min_rating)).values
 ```
-**Train Test Split**
- - Train test split dengan mengacak data, dan membagi langsung 80% data train dan 20% data validasi.
+### Train Test Split
+- Train test split dengan mengacak data, dan membagi langsung 80% data train dan 20% data validasi.
  
 ## Modeling
 Tahap awal modeling adalah, dengan membuat class yang berisi layer embedding dengan activation sigmoid. Layer embedding merupakan layer perkalian matrix sederhana yang mengubah integer positif (index) menjadi vector dense dengan ukuran tetap, output fungsi sigmoid dalam rentang (0, 1), membuatnya ideal untuk masalah klasifikasi biner di mana kita perlu menemukan probabilitas data milik kelas tertentu.
@@ -85,7 +85,4 @@ Visualisasi diatas menunjukan nilai rata-rata error yang cukup rendah, yaitu dia
 **---Ini adalah bagian akhir laporan---**
 
 
-                                
-
-                              
  
