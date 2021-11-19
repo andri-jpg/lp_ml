@@ -47,6 +47,7 @@ Sumber dataset : [kaggle](https://www.kaggle.com/zeeshanmulla/recommendation-sys
 
 ## Data Preparation
 
+**data cleaning**
 - Membuat variable fix_title yang nantinya akan diisi dengan dataframe yang sudah dihilangkan duplikat datanya.
 - Mengkonversi data series menjadi list pada data variable fix_title dengan tolist dari library numpy.
 - Membuat variable title_new yang berisi dictionary key value untuk label user_id, title_id, dan rating_title, yang nantinya akan digunakan untuk membuat data judul film yang belum di tonton/diberi rating oleh user.
