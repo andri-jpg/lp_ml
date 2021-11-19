@@ -73,8 +73,7 @@ RMSE merupakan nilai rata-rata dari jumlah kuadrat kesalahan atau jumlah kuadrat
 Karna yang ingin kita analisis adalah besarnya kesalahan prediksi, maka digunakan RMSE yang mana semakin kecil nilai nya/mendekati atau sama dengan 0, maka performa model semakin bagus, RMSE dihitung dengan mengkuadratkan error (prediksi – observasi) dibagi dengan jumlah data (= rata-rata), lalu diakarkan.    
 
 Rumus RMSE adalah sebagai berikut.
-\
-![e338f2ec839a92c91a2ec14737a9d7c0.jpg](https://zippyimage.com/images/2021/11/19/e338f2ec839a92c91a2ec14737a9d7c0.jpg)
+RMSE = \sqrt{\frac{\sum_{n}^{i=1}(\hat{y}-y_{i})^{2}}{n}}
 \
 berikut merupakan visualisasi hasil training model dengan metrics RMSE.
 \
