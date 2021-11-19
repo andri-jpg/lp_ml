@@ -40,7 +40,7 @@ Dataset yang digunakan memiliki 1682 judul film, 944 user, 100002 baris data, da
 Sumber dataset : [kaggle](https://www.kaggle.com/zeeshanmulla/recommendation-system-movie/code)
 
 ### Variabel-variabel pada movie_id_title dan Recommendation_system adalah sebagai berikut:
-- item_id : id judul film
+* item_id : id judul film
 - title : judul film
 - user_id : id user
 - rating : penilaian user
