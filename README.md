@@ -63,6 +63,7 @@ selanjutnya compile model, model ini menggunakan Binary Crossentropy untuk mengh
 Karna yang ingin kita analisis adalah besarnya kesalahan prediksi, maka digunakan RMSE yang mana semakin kecil nilai nya/mendekati atau sama dengan 0, maka performa model semakin bagus, berikut merupakan visualisasi hasil training model dengan metrics RMSE.
 \
 ![visual](https://zippyimage.com/images/2021/11/16/fac426f1f73243b98c9015c4993a5fc3.png)
+\
 Visualisasi diatas menunjukan nilai rata-rata error yang cukup rendah, yaitu diangka 0.22 untuk data training, dan 0.23 untuk data validasi, selisih error antara data training dan validasi juga sangat kecil, yang menunjukan model ini relatif dapat memprediksi dengan cukup baik.
 
 RMSE merupakan nilai rata-rata dari jumlah kuadrat kesalahan atau jumlah kuadrat dari nilai prakiraan dan observasi.
